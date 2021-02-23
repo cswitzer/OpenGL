@@ -1,2 +1,12 @@
-﻿  lesson1.cpp
-  OpenGL.vcxproj -> D:\Repos\UnityGames\OpenGL\OpenGL\Debug\OpenGL.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(477,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  lesson1.cpp
+D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(10,30): warning C4305: 'initializing': truncation from 'int' to 'char'
+D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(10,27): warning C4309: 'initializing': truncation of constant value
+D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(11,31): warning C4305: 'initializing': truncation from 'int' to 'char'
+D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(11,28): warning C4309: 'initializing': truncation of constant value
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\bin\vc120.pdb'; linking object as if no debug info
+  OpenGL.vcxproj -> D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\bin\OpenGL.exe

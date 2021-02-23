@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Repos\UnityGames\OpenGL\OpenGL\Debug\OpenGL.exe</FullPath>
+      <FullPath>D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\bin\OpenGL.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
