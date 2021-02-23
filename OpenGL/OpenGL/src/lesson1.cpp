@@ -7,8 +7,8 @@
 // GLEW must come before GLFW
 
 const char* APP_TITLE = "Basic Game";
-const char gWindowWidth = 800;
-const char gWindowHeight = 600;
+const float gWindowWidth = 800;
+const float gWindowHeight = 600;
 
 using namespace std;
 
@@ -49,6 +49,21 @@ int main()
 		return -1;
 	}
 
+	// stay in this loop until the window should be closed
+	while (!glfwWindowShouldClose(pWindow))
+	{
+		// poll for keyboard and mouse inputs
+		glfwPollEvents();
+
+		// clear the screen every frame so we can draw on a clean canvas
+		glClearColor(0.23f, 0.38f, 0.47f, 1.0f); // the color we will clean the canvas with
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		// Allows front and back buffer to swap. This leads to smooth buffer transitions (avoids flicker)
+		glfwSwapBuffers(pWindow);
+	}
+
 	glfwTerminate();
 	return 0;
 }
+
