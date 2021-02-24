@@ -2,6 +2,6 @@
   lesson1.cpp
 D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(30,55): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
-D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(30,41): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(51,44): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\src\lesson1.cpp(51,30): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
   OpenGL.vcxproj -> D:\Repos\UnityGames\OpenGL\OpenGL\OpenGL\bin\OpenGL.exe
