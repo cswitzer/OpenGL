@@ -1,42 +1,21 @@
 #include <iostream>
 #include <sstream>
+
 #define GLEW_STATIC
 #include "GL/glew.h";
 #include "GLFW/glfw3.h";
 
+#include "ShaderProgram.h"
+
 // GLEW must come before GLFW
 
-const char* APP_TITLE = "Introduction to Modern OpenGL - Hello Triangle";
+const char* APP_TITLE = "Introduction to Modern OpenGL - Hello Shader";
 const float gWindowWidth = 800;
 const float gWindowHeight = 600;
 GLFWwindow* gWindow = NULL;
 bool gFullScreen = false;
 
 using namespace std;
-
-// Shaders are usually files that exists on the harddrive, but for practice purposes, 
-// I will stick them here for now
-// Shaders
-const GLchar* vertexShaderSrc =
-"#version 330 core\n"
-"layout (location = 0) in vec3 pos;" // vector 3 for our VBO's position attributes
-"layout (location = 1) in vec3 color;"
-"out vec3 vert_color;"
-"void main()"
-"{"
-"	vert_color = color;"
-"   gl_Position = vec4(pos.x, pos.y, pos.z, 1.0);"
-"}";
-
-const GLchar* fragmentShaderSrc =
-"#version 330 core\n"
-"in vec3 vert_color;"
-"out vec4 frag_color;"
-"void main()"
-"{"
-"   frag_color = vec4(vert_color, 1.0f);"
-"}";
-
 
 // key pressing function must be like this exactly (the function can be named anything though)
 // This function will be called everytime a key is hit
@@ -60,8 +39,6 @@ int main()
 		 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, // right
 		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f// left
 	};
-
-
 
 	// vertex buffer objects are generic places in memory (blobs in memory) that hold data
 	// send the vertices to the GPU right away
@@ -116,52 +93,10 @@ int main()
 	// Enable drawing from 0th position in the VAO
 	glEnableVertexAttribArray(1);
 
-	// variables for error checking
-	GLint result;
-	GLchar infoLog[51];
+	// create shader program using our shader class
+	ShaderProgram shaderProgram;
+	shaderProgram.loadShaders("shaders/basic.vert", "shaders/basic.frag");
 
-	// Create and compile vertex shader
-	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vs, 1, &vertexShaderSrc, NULL);
-	glCompileShader(vs);
-	// check for errors just in case
-	glGetShaderiv(vs, GL_COMPILE_STATUS, &result);
-	if (!result)
-	{
-		glGetShaderInfoLog(vs, sizeof(infoLog), NULL, infoLog);
-		cout << "Error! Vertex Shader failed to compile. " << infoLog << endl;
-	}
-
-	// Create and compile fragement shader
-	GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fs, 1, &fragmentShaderSrc, NULL);
-	glCompileShader(fs);
-	// check for errors just in case
-	glGetShaderiv(fs, GL_COMPILE_STATUS, &result);
-	if (!result)
-	{
-		glGetShaderInfoLog(fs, sizeof(infoLog), NULL, infoLog);
-		cout << "Error! Fragment Shader failed to compile. " << infoLog << endl;
-	}
-
-	// create program and attach already compiled shaders to it
-	GLuint shaderProgram = glCreateProgram();
-	glAttachShader(shaderProgram, vs);
-	glAttachShader(shaderProgram, fs);
-	// link the program together. This creates a single program we can call upon to use all our shaders
-	glLinkProgram(shaderProgram);
-
-	// if linking the program together fails, output fail message
-	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &result);
-	if (!result)
-	{
-		glGetProgramInfoLog(shaderProgram, sizeof(infoLog), NULL, infoLog);
-		cout << "Error! Shader Program Linker failure. " << infoLog << endl;
-	}
-
-	// we already linked the shaders to the program, so we don't need them anymore
-	glDeleteShader(vs);
-	glDeleteShader(fs);
 
 	// stay in this loop until the window should be closed
 	while (!glfwWindowShouldClose(gWindow))
@@ -175,7 +110,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// use the shaderProgram
-		glUseProgram(shaderProgram);
+		shaderProgram.use();
 
 		// we want to draw from this vertex array object
 		glBindVertexArray(vao);
@@ -191,7 +126,7 @@ int main()
 	}
 
 	// clean things up before we are done
-	glDeleteProgram(shaderProgram);
+	
 	glDeleteVertexArrays(1, &vao);
 	glDeleteBuffers(1, &vbo);
 
